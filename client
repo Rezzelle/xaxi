@@ -1,0 +1,33 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+public class client {
+	private final static String hostname = "host";
+	private final static int DAYUN = 9090;
+	
+	public static void main (String[] args, BufferedReader cn) throws IOException  {
+		try(Socket clientSocket =  new Socket(hostname, DAYUN)) {
+			InputStream is = clientSocket.getInputStream(); 
+			new BufferedReader(new InputStreamReader(is));
+			new PrintWriter(clientSocket.getOutputStream(), true);
+			{ 
+				System.out.println("Connected to.." + hostname + " dayun" + DAYUN );
+				
+				String data = "Hi";
+				System.out.println("To server: \n" + data );
+				System.out.println("data");
+				String line1 ;
+				
+		while((line1 = cn.readLine()) != null)  {
+			System.out.println("Meassage Recieved:" + line1);	
+			
+		}
+			}
+		}
+		}
+	}
+
